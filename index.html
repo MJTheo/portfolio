@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Michael — Systems &amp; Automation Portfolio</title>
+<title>Putu Michael Jehian Theo — Systems &amp; Automation Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@
   }
   .nav .brand{font-weight:600; font-size:15px; letter-spacing:0.02em;}
   .nav .brand .dot{color:var(--teal);}
-  .nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  .nav ul{list-style:none; display:flex; gap:22px; margin:0; padding:0;}
   .nav a{font-size:13px; color:var(--muted); text-decoration:none; letter-spacing:0.03em;}
   .nav a:hover{color:var(--text);}
 
@@ -171,7 +171,43 @@
   .shot-slot .icon{font-size:20px; opacity:0.6;}
   .shot-slot code{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--slate); background:var(--surface-hi); padding:2px 7px; border-radius:4px;}
 
-  /* ---- skills ---- */
+  /* ---- experience timeline ---- */
+  .experience{border-bottom:1px solid var(--border);}
+  .timeline{position:relative; padding-left:4px;}
+  .tl-item{display:flex; gap:20px; padding-bottom:32px; position:relative;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:4px; top:20px; bottom:-4px; width:1px; background:var(--border);
+  }
+  .tl-item:last-child::before{display:none;}
+  .tl-dot{width:9px;height:9px;border-radius:50%; margin-top:6px; flex-shrink:0; z-index:1;}
+  .tl-dot.on{background:var(--teal); box-shadow:0 0 8px rgba(79,191,159,0.6);}
+  .tl-dot.dev{background:var(--amber); box-shadow:0 0 8px rgba(232,163,61,0.5);}
+  .tl-dot.arch{background:var(--slate);}
+  .tl-body{flex:1;}
+  .tl-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:2px;}
+  .tl-role{font-size:17px; font-weight:600; font-family:'Space Grotesk',sans-serif;}
+  .tl-date{font-size:11.5px; color:var(--dim);}
+  .tl-org{font-size:13px; color:var(--teal); margin-bottom:8px;}
+  .tl-body p{margin:0; color:var(--muted); font-size:14px; max-width:640px;}
+
+  /* ---- education / publications ---- */
+  .edu-card{
+    border:1px solid var(--border); border-radius:var(--radius); background:var(--surface);
+    padding:22px 24px; margin-bottom:16px;
+  }
+  .edu-head{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:4px;}
+  .edu-title{font-size:17px; font-weight:600;}
+  .edu-date{font-size:12px; color:var(--dim); font-family:'JetBrains Mono',monospace;}
+  .edu-sub{font-size:13.5px; color:var(--slate); margin-bottom:14px;}
+  .pub{
+    border-left:2px solid var(--teal); padding:4px 0 4px 14px; margin-bottom:12px; font-size:14px; color:var(--muted);
+  }
+  .pub:last-child{margin-bottom:0;}
+  .pub a{color:var(--teal); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12.5px; word-break:break-all;}
+  .pub a:hover{text-decoration:underline;}
+
+
   .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;}
   .skill-card{border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px; background:var(--surface);}
   .skill-card h3{font-size:14px; margin:0 0 12px; color:var(--teal); text-transform:uppercase; letter-spacing:0.04em; font-weight:600;}
@@ -209,10 +245,12 @@
 <body>
 
 <nav class="nav">
-  <div class="brand">MICHAEL <span class="dot">//</span> <span class="mono" style="font-size:13px;color:var(--muted);">systems log</span></div>
+  <div class="brand">P. MICHAEL THEO <span class="dot">//</span> <span class="mono" style="font-size:13px;color:var(--muted);">systems log</span></div>
   <ul>
     <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#systems">Projects</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -221,13 +259,13 @@
 <section class="hero">
   <div class="hero-eyebrow"><span class="pulse"></span> AVAILABLE FOR FREELANCE &amp; FULL-TIME WORK</div>
   <h1>I build the systems that quietly keep <span>operations</span> running.</h1>
-  <p class="lede">HR &amp; Operations professional in Bali who builds automation tools instead of just requesting them — appraisal pipelines, attendance systems, inventory apps, and rules-based trading engines. This page is a running log of what I've shipped.</p>
+  <p class="lede">Putu Michael Jehian Theo — General Affairs Daily Worker at BaliSuperHost in Bali, who builds automation tools instead of just requesting them: appraisal pipelines, attendance systems, inventory apps, and rules-based trading engines. This page is a running log of what I've shipped.</p>
 
   <div class="statline">
-    <div class="stat"><div class="n">05</div><div class="l">systems shipped</div></div>
-    <div class="stat"><div class="n">10</div><div class="l">roles supported</div></div>
-    <div class="stat"><div class="n">03</div><div class="l">platforms (Apps Script / React / MQL5)</div></div>
-    <div class="stat"><div class="n">01</div><div class="l">operator who builds their own tools</div></div>
+    <div class="stat"><div class="n">1.5K+</div><div class="l">assets tracked in the system I built</div></div>
+    <div class="stat"><div class="n">30+</div><div class="l">staff using the attendance system daily</div></div>
+    <div class="stat"><div class="n">2hr→20m</div><div class="l">appraisal processing time, before/after</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">published research contributions</div></div>
   </div>
 </section>
 
@@ -235,7 +273,7 @@
   <div class="section-head"><span class="idx">00</span><h2>About</h2><span class="rule"></span></div>
   <div class="about-grid">
     <div>
-      <p>I work in HR and operations for a hospitality company in Bali, managing a small team day-to-day. Somewhere along the way, instead of tolerating slow manual processes, I started building the tools to fix them myself — no engineering title required.</p>
+      <p>I work as a General Affairs Daily Worker at BaliSuperHost in Bali, handling equipment, supplies, and inventory for the team day to day. Somewhere along the way, instead of tolerating slow manual processes, I started building the tools to fix them myself — no engineering title required.</p>
       <p>Every project on this page started as a real, specific operational headache: an appraisal cycle that took days to compile by hand, an attendance sheet nobody trusted, an inventory spreadsheet nobody could search. I learned the platforms as I needed them — Google Apps Script first, then React, then applied scripting for rules-based systems — and shipped something my own team actually uses.</p>
     </div>
     <div class="thread">
@@ -250,8 +288,38 @@
   </div>
 </section>
 
+<section class="experience" id="experience">
+  <div class="section-head"><span class="idx">01</span><h2>Experience</h2><span class="rule"></span></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot on"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-role">General Affairs Daily Worker</span><span class="tl-date mono">Apr 2026 — Present</span></div>
+        <div class="tl-org">BaliSuperHost</div>
+        <p>Manage equipment, supplies, and inventory documentation for the team, and build the automation systems featured on this page — including the asset database, attendance tracker, and appraisal pipeline. Also coordinated the relocation of a 35-person division to a new office, moving 100+ pieces of equipment and cutting reconciliation time from 2 days to same-day.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot arch"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-role">Project Administrator</span><span class="tl-date mono">Nov 2020 — Nov 2021</span></div>
+        <div class="tl-org">PT Harita</div>
+        <p>Scheduled and tracked project deliverables, maintained documentation, and facilitated stakeholder communication — completed during my first year of university.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot dev"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-role">Data Entry Clerk <span class="mono" style="font-size:11px;color:var(--dim);">(freelance)</span></span><span class="tl-date mono">Nov 2024 — May 2025</span></div>
+        <div class="tl-org">Miceverse</div>
+        <p>Executed high-accuracy data entry and digital file organization, refining data-processing methods alongside the team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="systems" id="systems">
-  <div class="section-head"><span class="idx">01</span><h2>Projects</h2><span class="rule"></span></div>
+  <div class="section-head"><span class="idx">02</span><h2>Projects</h2><span class="rule"></span></div>
 
   <!-- Project 1 -->
   <div class="card">
@@ -263,7 +331,7 @@
       <span class="status-label on">in production</span>
     </div>
     <div class="card-body">
-      <p class="card-desc">An end-to-end pipeline that turns Tally form submissions into finished, role-specific PDF appraisal reports — no manual compiling.</p>
+      <p class="card-desc">An end-to-end pipeline that turns Tally form submissions into finished, role-specific PDF appraisal reports — cutting processing time from 2+ hours to 15–30 minutes per appraisal.</p>
       <div class="tags">
         <span class="tag">Google Apps Script</span><span class="tag">Sheets</span><span class="tag">Docs API</span><span class="tag">Drive API</span><span class="tag">Tally Forms</span>
       </div>
@@ -287,7 +355,7 @@
       <span class="status-label on">in production</span>
     </div>
     <div class="card-body">
-      <p class="card-desc">A calendar-style attendance tracker built on Forms and Sheets, with color-coded status so anyone can spot a problem in seconds.</p>
+      <p class="card-desc">A calendar-style attendance tracker built on Forms and Sheets, used by 30+ staff daily, with color-coded status so anyone can spot a problem in seconds.</p>
       <div class="tags">
         <span class="tag">Google Apps Script</span><span class="tag">Forms</span><span class="tag">Sheets</span><span class="tag">Custom Menus</span>
       </div>
@@ -335,7 +403,7 @@
       <span class="status-label on">in production</span>
     </div>
     <div class="card-body">
-      <p class="card-desc">A React inventory management app built across several iterative releases, taking a spreadsheet-based process into a searchable, filterable interface.</p>
+      <p class="card-desc">A React inventory management app built across several iterative releases, turning a spreadsheet tracking 1,500+ assets into a searchable, filterable interface.</p>
       <div class="tags">
         <span class="tag">React</span><span class="tag">Google Sheets (data source)</span><span class="tag">Server-side Proxy</span>
       </div>
@@ -372,8 +440,42 @@
 
 </section>
 
+<section class="education" id="education">
+  <div class="section-head"><span class="idx">03</span><h2>Education &amp; Research</h2><span class="rule"></span></div>
+
+  <div class="edu-card">
+    <div class="edu-head">
+      <span class="edu-title">Bachelor's Degree, Telkom University</span>
+      <span class="edu-date">Aug 2021 — Aug 2025</span>
+    </div>
+    <div class="edu-sub">Telecommunications and Informatics Business Management · GPA 3.86 with honors</div>
+    <p style="color:var(--muted); font-size:14.5px; margin:0 0 16px;">Selected for Kampus Merdeka's MSIB Independent Study program — <strong style="color:var(--text);">Bangkit</strong>, led by Google in partnership with Dicoding, Machine Learning learning pathway. Completed a capstone project building an image-recognition app for sign language translation.</p>
+    <div class="pub">
+      Scopus-indexed conference article: <em>"Machine Learning Applications in Social Network Analysis for Indonesia Capital City Relocation: A Bibliometric Analysis"</em><br>
+      <a href="https://link.springer.com/chapter/10.1007/978-3-032-04214-9_16" target="_blank">link.springer.com/chapter/10.1007/978-3-032-04214-9_16</a>
+    </div>
+    <div class="pub">
+      Contributing researcher: <em>"Information System for Saving and Loan Cooperative in Indonesia"</em><br>
+      <a href="https://doi.org/10.1109/ICONDBTM64135.2024.11122830" target="_blank">doi.org/10.1109/ICONDBTM64135.2024.11122830</a>
+    </div>
+  </div>
+
+  <div class="edu-card">
+    <div class="edu-head">
+      <span class="edu-title">High School Diploma, SMK TI Bali Global Denpasar</span>
+      <span class="edu-date">Jul 2017 — Jul 2020</span>
+    </div>
+    <div class="edu-sub">Software Engineering</div>
+    <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px;">
+      <li style="margin-bottom:7px;">Built a restaurant cashier system from scratch as a final project, using HTML, CSS, JavaScript, and PHP.</li>
+      <li style="margin-bottom:7px;">Created a simple game using C++.</li>
+      <li>Obtained a Certificate of Competence from LPDP.</li>
+    </ul>
+  </div>
+</section>
+
 <section class="skills" id="skills">
-  <div class="section-head"><span class="idx">02</span><h2>Skills</h2><span class="rule"></span></div>
+  <div class="section-head"><span class="idx">04</span><h2>Skills</h2><span class="rule"></span></div>
   <div class="skills-grid">
     <div class="skill-card">
       <h3>Automation &amp; Scripting</h3>
@@ -397,6 +499,8 @@
       <ul>
         <li>React (state, UX, pagination, search)</li>
         <li>HTML5 Canvas</li>
+        <li>PHP</li>
+        <li>C++</li>
         <li>API/proxy troubleshooting</li>
       </ul>
     </div>
@@ -434,17 +538,18 @@
     <div>
       <h2>Let's fix your slowest process.</h2>
       <p>Open to freelance automation work and full-time operations/automation roles.</p>
+      <p class="mono" style="margin-top:10px; font-size:12.5px; color:var(--dim);">Badung, Bali, Indonesia · +62 859-5532-0949</p>
     </div>
     <div class="contact-links">
-      <a class="btn primary" href="mailto:youremail@example.com">Email me</a>
-      <a class="btn" href="#" target="_blank">LinkedIn</a>
-      <a class="btn" href="#" target="_blank">WhatsApp</a>
+      <a class="btn primary" href="mailto:pmjtheo@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/jehian-theo" target="_blank">LinkedIn</a>
+      <a class="btn" href="https://wa.me/6285955320949" target="_blank">WhatsApp</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div>© 2026 Michael — Bali, Indonesia</div>
+  <div>© 2026 Putu Michael Jehian Theo — Badung, Bali, Indonesia</div>
   <div class="mono">Last updated: fill in date</div>
 </footer>
 
