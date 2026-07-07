@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael — Systems &amp; Automation Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10161A;
+    --bg-alt: #0C1114;
+    --surface: #161F24;
+    --surface-hi: #1B262C;
+    --border: #263039;
+    --text: #EDEEEA;
+    --muted: #8B98A0;
+    --dim: #5D6A72;
+    --teal: #4FBF9F;
+    --teal-dim: rgba(79,191,159,0.14);
+    --amber: #E8A33D;
+    --amber-dim: rgba(232,163,61,0.14);
+    --slate: #7C8A93;
+    --slate-dim: rgba(124,138,147,0.14);
+    --radius: 10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+
+  /* ---- top nav ---- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(16,22,26,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav .brand{font-weight:600; font-size:15px; letter-spacing:0.02em;}
+  .nav .brand .dot{color:var(--teal);}
+  .nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  .nav a{font-size:13px; color:var(--muted); text-decoration:none; letter-spacing:0.03em;}
+  .nav a:hover{color:var(--text);}
+
+  /* ---- hero ---- */
+  .hero{
+    padding:88px 6vw 56px;
+    border-bottom:1px solid var(--border);
+    background:
+      radial-gradient(ellipse 900px 400px at 15% 0%, rgba(79,191,159,0.07), transparent 60%),
+      var(--bg);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .pulse{
+    width:7px;height:7px;border-radius:50%;background:var(--teal);
+    box-shadow:0 0 0 0 rgba(79,191,159,0.6);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(79,191,159,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(79,191,159,0);}
+    100%{box-shadow:0 0 0 0 rgba(79,191,159,0);}
+  }
+  .hero h1{
+    font-size:clamp(34px,5vw,58px);
+    font-weight:600;
+    margin:0 0 18px;
+    max-width:820px;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 span{color:var(--teal);}
+  .hero p.lede{
+    max-width:640px; color:var(--muted); font-size:17px; margin:0 0 40px;
+  }
+  .statline{
+    display:flex; flex-wrap:wrap; gap:0;
+    border-top:1px solid var(--border);
+    max-width:760px;
+  }
+  .stat{
+    flex:1 1 160px; padding:18px 22px 0; border-right:1px solid var(--border);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .n{font-family:'JetBrains Mono',monospace; font-size:26px; font-weight:500; color:var(--text);}
+  .stat .l{font-size:12px; color:var(--dim); margin-top:4px; text-transform:uppercase; letter-spacing:0.05em;}
+
+  /* ---- section shell ---- */
+  section{padding:64px 6vw;}
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px;}
+  .section-head .idx{font-family:'JetBrains Mono',monospace; color:var(--dim); font-size:13px;}
+  .section-head h2{font-size:24px; font-weight:600; margin:0;}
+  .section-head .rule{flex:1; height:1px; background:var(--border);}
+
+  /* ---- about ---- */
+  .about{border-bottom:1px solid var(--border); background:var(--bg-alt);}
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px;}
+  .about-grid p{color:var(--muted); font-size:15.5px; max-width:560px;}
+  .about-grid p + p{margin-top:14px;}
+  .thread{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .thread h3{font-size:13px; text-transform:uppercase; letter-spacing:0.06em; color:var(--slate); margin:0 0 14px; font-weight:600;}
+  .thread ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px;}
+  .thread li{margin-bottom:8px;}
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* ---- systems / projects ---- */
+  .systems{border-bottom:1px solid var(--border);}
+  .card{
+    border:1px solid var(--border); border-radius:var(--radius);
+    background:var(--surface);
+    margin-bottom:20px;
+    overflow:hidden;
+  }
+  .card-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 24px; gap:16px; flex-wrap:wrap;
+  }
+  .card-title-wrap{display:flex; align-items:center; gap:12px;}
+  .status-dot{width:9px;height:9px;border-radius:50%; flex-shrink:0;}
+  .status-dot.on{background:var(--teal); box-shadow:0 0 8px rgba(79,191,159,0.6);}
+  .status-dot.dev{background:var(--amber); box-shadow:0 0 8px rgba(232,163,61,0.5);}
+  .status-dot.arch{background:var(--slate);}
+  .card-title{font-size:19px; font-weight:600;}
+  .status-label{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.05em;
+    padding:4px 9px; border-radius:20px; text-transform:uppercase;
+  }
+  .status-label.on{color:var(--teal); background:var(--teal-dim);}
+  .status-label.dev{color:var(--amber); background:var(--amber-dim);}
+  .status-label.arch{color:var(--slate); background:var(--slate-dim);}
+  .card-body{padding:0 24px 24px;}
+  .card-desc{color:var(--muted); font-size:14.5px; margin:0 0 16px; max-width:680px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--slate);
+    border:1px solid var(--border); padding:4px 10px; border-radius:5px; background:var(--bg-alt);
+  }
+  .card ul.highlights{margin:0; padding-left:18px; color:var(--text); font-size:14.5px;}
+  .card ul.highlights li{margin-bottom:9px; color:#D7DBDB;}
+  .card ul.highlights li::marker{color:var(--teal);}
+
+  .shot-slot{
+    margin-top:18px;
+    border:1px dashed var(--border);
+    border-radius:8px;
+    background:var(--bg-alt);
+    min-height:130px;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:6px;
+    color:var(--dim); font-size:12.5px;
+  }
+  .shot-slot .icon{font-size:20px; opacity:0.6;}
+  .shot-slot code{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--slate); background:var(--surface-hi); padding:2px 7px; border-radius:4px;}
+
+  /* ---- skills ---- */
+  .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;}
+  .skill-card{border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px; background:var(--surface);}
+  .skill-card h3{font-size:14px; margin:0 0 12px; color:var(--teal); text-transform:uppercase; letter-spacing:0.04em; font-weight:600;}
+  .skill-card ul{margin:0; padding:0; list-style:none; font-size:14px; color:var(--muted);}
+  .skill-card li{padding:5px 0; border-bottom:1px solid var(--bg-alt);}
+  .skill-card li:last-child{border-bottom:none;}
+
+  /* ---- contact / footer ---- */
+  .contact{text-align:left;}
+  .contact-box{
+    border:1px solid var(--border); border-radius:var(--radius);
+    background:linear-gradient(135deg, var(--surface), var(--bg-alt));
+    padding:40px 6vw;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+  }
+  .contact-box h2{margin:0 0 8px; font-size:26px;}
+  .contact-box p{margin:0; color:var(--muted); font-size:14.5px;}
+  .contact-links{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono',monospace; font-size:13px;
+    padding:12px 20px; border-radius:8px; border:1px solid var(--border);
+    text-decoration:none; color:var(--text); background:var(--surface-hi);
+    white-space:nowrap;
+  }
+  .btn.primary{background:var(--teal); color:#0C1114; border-color:var(--teal); font-weight:600;}
+  footer{padding:28px 6vw 40px; color:var(--dim); font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  @media (max-width:640px){
+    .nav ul{display:none;}
+    section{padding:48px 5vw;}
+    .hero{padding:70px 5vw 40px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">MICHAEL <span class="dot">//</span> <span class="mono" style="font-size:13px;color:var(--muted);">systems log</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#systems">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow"><span class="pulse"></span> AVAILABLE FOR FREELANCE &amp; FULL-TIME WORK</div>
+  <h1>I build the systems that quietly keep <span>operations</span> running.</h1>
+  <p class="lede">HR &amp; Operations professional in Bali who builds automation tools instead of just requesting them — appraisal pipelines, attendance systems, inventory apps, and rules-based trading engines. This page is a running log of what I've shipped.</p>
+
+  <div class="statline">
+    <div class="stat"><div class="n">05</div><div class="l">systems shipped</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">roles supported</div></div>
+    <div class="stat"><div class="n">03</div><div class="l">platforms (Apps Script / React / MQL5)</div></div>
+    <div class="stat"><div class="n">01</div><div class="l">operator who builds their own tools</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-head"><span class="idx">00</span><h2>About</h2><span class="rule"></span></div>
+  <div class="about-grid">
+    <div>
+      <p>I work in HR and operations for a hospitality company in Bali, managing a small team day-to-day. Somewhere along the way, instead of tolerating slow manual processes, I started building the tools to fix them myself — no engineering title required.</p>
+      <p>Every project on this page started as a real, specific operational headache: an appraisal cycle that took days to compile by hand, an attendance sheet nobody trusted, an inventory spreadsheet nobody could search. I learned the platforms as I needed them — Google Apps Script first, then React, then applied scripting for rules-based systems — and shipped something my own team actually uses.</p>
+    </div>
+    <div class="thread">
+      <h3>The throughline</h3>
+      <ul>
+        <li>Find the manual process that's actually costing hours, not the one that's easiest to automate.</li>
+        <li>Design for the non-technical person who has to use it daily — clear color codes, toolbar menus, no training required.</li>
+        <li>Handle the messy real-world data: inconsistent IDs, duplicate headers, incomplete submissions.</li>
+        <li>Ship it, watch how it's actually used, then iterate.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="systems" id="systems">
+  <div class="section-head"><span class="idx">01</span><h2>Projects</h2><span class="rule"></span></div>
+
+  <!-- Project 1 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title-wrap">
+        <span class="status-dot on"></span>
+        <span class="card-title">Annual Performance Appraisal Automation</span>
+      </div>
+      <span class="status-label on">in production</span>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">An end-to-end pipeline that turns Tally form submissions into finished, role-specific PDF appraisal reports — no manual compiling.</p>
+      <div class="tags">
+        <span class="tag">Google Apps Script</span><span class="tag">Sheets</span><span class="tag">Docs API</span><span class="tag">Drive API</span><span class="tag">Tally Forms</span>
+      </div>
+      <ul class="highlights">
+        <li>Processes Tally submissions through Sheets and auto-generates PDF reports from role-specific Google Doc templates.</li>
+        <li>Supports 10 distinct employee roles, each with its own question mapping and appraisal criteria.</li>
+        <li>Resolves duplicate form headers automatically via <code class="mono">_col{N}</code> indexing, and organizes output into area-based Drive sub-folders.</li>
+        <li>Replaced a fully manual appraisal cycle with a repeatable, self-running system.</li>
+      </ul>
+      <div class="shot-slot"><span class="icon">▢</span>Screenshot placeholder — add a sample generated PDF or the Sheet dashboard here<br><code>/* replace with &lt;img src="appraisal-1.png"&gt; */</code></div>
+    </div>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title-wrap">
+        <span class="status-dot on"></span>
+        <span class="card-title">Staff Attendance Tracking System</span>
+      </div>
+      <span class="status-label on">in production</span>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">A calendar-style attendance tracker built on Forms and Sheets, with color-coded status so anyone can spot a problem in seconds.</p>
+      <div class="tags">
+        <span class="tag">Google Apps Script</span><span class="tag">Forms</span><span class="tag">Sheets</span><span class="tag">Custom Menus</span>
+      </div>
+      <ul class="highlights">
+        <li>Indonesian month-named sheets built for local, non-technical usability.</li>
+        <li>Staff ID normalization logic that handles Roman numerals, punctuation, and format variants submitted inconsistently by different team members.</li>
+        <li>Clock-IN / Clock-OUT pairing logic drives color-coded calendar cells — green, yellow, red — for instant status at a glance.</li>
+        <li>Dedicated mismatch and incomplete-submission log sheets, plus a custom toolbar menu, so the team can self-correct without IT support.</li>
+      </ul>
+      <div class="shot-slot"><span class="icon">▢</span>Screenshot placeholder — add the color-coded calendar view here<br><code>/* replace with &lt;img src="attendance-1.png"&gt; */</code></div>
+    </div>
+  </div>
+
+  <!-- Project 3 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title-wrap">
+        <span class="status-dot dev"></span>
+        <span class="card-title">XAUUSD Algorithmic Trading Systems</span>
+      </div>
+      <span class="status-label dev">active development</span>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">Rules-based gold (XAUUSD) trading systems built in parallel across MetaTrader 5 and TradingView, exploring multi-timeframe confluence and risk management logic.</p>
+      <div class="tags">
+        <span class="tag">MQL5</span><span class="tag">Pine Script v6</span><span class="tag">Multi-timeframe Logic</span><span class="tag">Risk Management</span>
+      </div>
+      <ul class="highlights">
+        <li>MT5 Expert Advisor (v6.5) combining H4 trend detection with M15 entries, ATR-based stop-loss, partial take-profit, and a trailing stop.</li>
+        <li>Confluence scoring system requiring multiple confirming signals, plus ADX, session, and day-of-week filters before a trade is taken.</li>
+        <li>Mirrored the logic in Pine Script v6 with an on-chart dashboard, adding CCI-based Supertrend, MACD, WMA tiers, and pivot-based support/resistance.</li>
+        <li>Margin-aware position sizing so risk stays consistent regardless of account size.</li>
+      </ul>
+      <div class="shot-slot"><span class="icon">▢</span>Screenshot placeholder — add a TradingView chart with the on-chart dashboard visible<br><code>/* replace with &lt;img src="trading-1.png"&gt; */</code></div>
+    </div>
+  </div>
+
+  <!-- Project 4 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title-wrap">
+        <span class="status-dot on"></span>
+        <span class="card-title">EquipTrack — Equipment Inventory App</span>
+      </div>
+      <span class="status-label on">in production</span>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">A React inventory management app built across several iterative releases, taking a spreadsheet-based process into a searchable, filterable interface.</p>
+      <div class="tags">
+        <span class="tag">React</span><span class="tag">Google Sheets (data source)</span><span class="tag">Server-side Proxy</span>
+      </div>
+      <ul class="highlights">
+        <li>Iterated across multiple builds, adding toast notifications, bulk-add modals, and smart pagination.</li>
+        <li>Clickable stat cards with filter-based navigation and per-category color coding for fast visual scanning.</li>
+        <li>Keyboard-navigable global search across the full inventory.</li>
+        <li>Diagnosed and fixed a CORS/architecture issue fetching Google Sheets data in a tunneled environment, by consolidating traffic through a single port with server-side proxying.</li>
+      </ul>
+      <div class="shot-slot"><span class="icon">▢</span>Screenshot placeholder — add the dashboard or stat-card view here<br><code>/* replace with &lt;img src="equiptrack-1.png"&gt; */</code></div>
+    </div>
+  </div>
+
+  <!-- Project 5 -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title-wrap">
+        <span class="status-dot arch"></span>
+        <span class="card-title">Interactive Image Overlay / Corner-Mapping Tool</span>
+      </div>
+      <span class="status-label arch">utility build</span>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">A lightweight browser tool for tracing and marking the corners of a rectangular shape in an uploaded photo.</p>
+      <div class="tags">
+        <span class="tag">HTML5 Canvas</span><span class="tag">JavaScript</span>
+      </div>
+      <ul class="highlights">
+        <li>Built as a focused, single-purpose tool for layout mapping and measurement tasks directly in the browser — no install required.</li>
+      </ul>
+      <div class="shot-slot"><span class="icon">▢</span>Screenshot placeholder — add a before/after of the corner-tracing tool here<br><code>/* replace with &lt;img src="overlay-1.png"&gt; */</code></div>
+    </div>
+  </div>
+
+</section>
+
+<section class="skills" id="skills">
+  <div class="section-head"><span class="idx">02</span><h2>Skills</h2><span class="rule"></span></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Automation &amp; Scripting</h3>
+      <ul>
+        <li>Google Apps Script</li>
+        <li>JavaScript</li>
+        <li>Form-to-document pipelines</li>
+        <li>Workflow &amp; process automation</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Systems Integration</h3>
+      <ul>
+        <li>Google Forms / Sheets / Docs / Drive APIs</li>
+        <li>Tally Forms</li>
+        <li>Template-based PDF generation</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>App Development</h3>
+      <ul>
+        <li>React (state, UX, pagination, search)</li>
+        <li>HTML5 Canvas</li>
+        <li>API/proxy troubleshooting</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Applied / Quant Scripting</h3>
+      <ul>
+        <li>MQL5 (MetaTrader 5 EAs)</li>
+        <li>Pine Script v6</li>
+        <li>Multi-timeframe signal logic</li>
+        <li>Risk &amp; position-sizing rules</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Data Handling</h3>
+      <ul>
+        <li>ID normalization across messy inputs</li>
+        <li>Duplicate-header resolution</li>
+        <li>Structured data mapping</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Domain Knowledge</h3>
+      <ul>
+        <li>HR operations &amp; appraisal cycles</li>
+        <li>Staff attendance management</li>
+        <li>Hospitality operations</li>
+        <li>Team supervision</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-box">
+    <div>
+      <h2>Let's fix your slowest process.</h2>
+      <p>Open to freelance automation work and full-time operations/automation roles.</p>
+    </div>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:youremail@example.com">Email me</a>
+      <a class="btn" href="#" target="_blank">LinkedIn</a>
+      <a class="btn" href="#" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Michael — Bali, Indonesia</div>
+  <div class="mono">Last updated: fill in date</div>
+</footer>
+
+</body>
+</html>
