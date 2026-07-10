@@ -181,6 +181,88 @@
   .shot-item img{ width:100%; height:100%; object-fit:cover; border-radius:6px; display:block; }
   .shot-item.filled{border-style:solid; padding:0;}
 
+  /* ---- pdf embed ---- */
+  .pdf-embed{
+    margin-top:18px;
+    border:1px solid var(--border); border-radius:8px; overflow:hidden;
+    background:var(--bg-alt);
+  }
+  .pdf-toolbar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:10px 14px; border-bottom:1px solid var(--border);
+  }
+  .pdf-toolbar .pdf-name{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--slate);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .pdf-toolbar .pdf-dl{
+    flex-shrink:0;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal);
+    text-decoration:none; border:1px solid var(--border); padding:5px 11px; border-radius:6px;
+    background:var(--surface);
+  }
+  .pdf-toolbar .pdf-dl:hover{border-color:var(--teal);}
+  .pdf-embed iframe{
+    width:100%; height:520px; border:none; display:block; background:#fff;
+  }
+  .pdf-fallback{
+    padding:14px; font-size:12.5px; color:var(--dim); text-align:center;
+  }
+  @media (max-width:640px){
+    .pdf-embed iframe{ height:380px; }
+  }
+
+  /* ---- figma prototype embed ---- */
+  .figma-embed{
+    margin-top:18px;
+    border:1px solid var(--border); border-radius:8px; overflow:hidden;
+    background:var(--bg-alt);
+  }
+  .figma-toolbar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:10px 14px; border-bottom:1px solid var(--border);
+  }
+  .figma-toolbar .figma-label{
+    display:flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--slate);
+  }
+  .figma-toolbar .figma-label .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--amber);
+    box-shadow:0 0 6px rgba(232,163,61,0.5);
+  }
+  .figma-toolbar .figma-open{
+    flex-shrink:0;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal);
+    text-decoration:none; border:1px solid var(--border); padding:5px 11px; border-radius:6px;
+    background:var(--surface);
+  }
+  .figma-toolbar .figma-open:hover{border-color:var(--teal);}
+  .figma-embed iframe{
+    width:100%; height:560px; border:none; display:block; background:#fff;
+  }
+  @media (max-width:640px){
+    .figma-embed iframe{ height:420px; }
+  }
+
+  /* ---- pdf embed ---- */
+  .pdf-embed{
+    border:1px solid var(--border); border-radius:8px; overflow:hidden;
+    background:var(--bg-alt); margin-top:12px;
+  }
+  .pdf-embed iframe{ width:100%; height:480px; border:0; display:block; background:#fff; }
+  .pdf-embed-footer{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:10px 14px; border-top:1px solid var(--border); background:var(--surface);
+  }
+  .pdf-embed-footer .pdf-name{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--slate); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .pdf-download-btn{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:600;
+    padding:6px 12px; border-radius:6px; border:1px solid var(--teal);
+    background:var(--teal); color:#0C1114; text-decoration:none; white-space:nowrap; flex-shrink:0;
+  }
+  .pdf-download-btn:hover{opacity:0.9;}
+  @media (max-width:640px){ .pdf-embed iframe{ height:340px; } }
+
   /* ---- experience timeline ---- */
   .experience{border-bottom:1px solid var(--border);}
   .timeline{position:relative; padding-left:4px;}
@@ -347,6 +429,40 @@
         <div class="shot-item filled"><img src="your-image.png" alt="description"></div>
       (the "filled" class removes the dashed border/padding so the image fills the tile cleanly)
     - The gallery grid automatically adjusts to however many shot-items you have — 1, 2, 5, whatever.
+
+    TO EMBED A SCROLLABLE, DOWNLOADABLE PDF (instead of/alongside a screenshot image):
+    Paste this block anywhere inside a .card-body, e.g. below the shot-gallery:
+
+      <div class="pdf-embed">
+        <div class="pdf-toolbar">
+          <span class="pdf-name">your-file.pdf</span>
+          <a class="pdf-dl" href="pic/your-file.pdf" download>Download PDF</a>
+        </div>
+        <iframe src="pic/your-file.pdf" title="your-file.pdf"></iframe>
+      </div>
+
+    - Visitors can scroll/zoom the PDF right on the page using the browser's built-in viewer — no extra library needed.
+    - The "Download PDF" button works everywhere, including on phones where inline PDF viewing is unreliable.
+    - Just drop the PDF file in the same "pic/" folder as your screenshots and update the two file paths above.
+
+    TO EMBED A CLICKABLE FIGMA PROTOTYPE:
+    1. In Figma: Share button (top right) → "Anyone with the link" → Viewer → copy the PROTOTYPE link
+       (not the regular edit link — open the prototype in Present mode first, then copy that URL).
+    2. Figma prototype links usually look like:
+       https://www.figma.com/proto/FILE_ID/NAME?node-id=...
+       For embedding, convert it to an embed URL by wrapping it like this:
+       https://www.figma.com/embed?embed_host=share&url=PASTE_YOUR_PROTOTYPE_LINK_HERE
+    3. Paste that final embed URL into the iframe src below:
+
+      <div class="figma-embed">
+        <div class="figma-toolbar">
+          <span class="figma-label"><span class="dot"></span> Interactive prototype — click through to explore</span>
+          <a class="figma-open" href="YOUR_ORIGINAL_FIGMA_PROTOTYPE_LINK" target="_blank">Open in Figma ↗</a>
+        </div>
+        <iframe src="YOUR_FIGMA_EMBED_URL" title="Clickable prototype" allowfullscreen></iframe>
+      </div>
+
+    - The "Open in Figma" button should use the original (non-embed) link, so visitors can open it full-screen if the inline frame feels cramped.
   -->
 
   <div class="section-head"><span class="idx">02</span><h2>Projects</h2><span class="rule"></span></div>
@@ -405,6 +521,13 @@
       <div class="shot-gallery">
         <div class="shot-item"><img src="pic/appraisal-1.png" alt="Sample Generated Appraisal PDF"></div>
         <div class="shot-item"><img src="pic/appraisal-2.png" alt="Submitted Spreadsheet"></div>
+      </div>
+      <div class="pdf-embed">
+        <div class="pdf-toolbar">
+          <span class="pdf-name">appraisal-sample.pdf</span>
+          <a class="pdf-dl" href="pdf/appraisal-result.pdf" download>Download PDF</a>
+        </div>
+        <iframe src="pdf/appraisal-result.pdf" title="Sample generated appraisal report"></iframe>
       </div>
     </div>
   </div>
