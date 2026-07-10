@@ -163,8 +163,11 @@
   .shot-gallery{
     margin-top:18px;
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns:repeat(2, 1fr);
     gap:12px;
+  }
+  @media (max-width:560px){
+    .shot-gallery{ grid-template-columns:1fr; }
   }
   .shot-item{
     border:1px dashed var(--border);
@@ -429,14 +432,14 @@
       <div class="pdf-embed">
         <div class="pdf-toolbar">
           <span class="pdf-name">your-file.pdf</span>
-          <a class="pdf-dl" href="pic/your-file.pdf" download>Download PDF</a>
+          <a class="pdf-dl" href="pdf/your-file.pdf" download>Download PDF</a>
         </div>
-        <iframe src="pic/your-file.pdf" title="your-file.pdf"></iframe>
+        <iframe src="pdf/your-file.pdf" title="your-file.pdf"></iframe>
       </div>
 
     - Visitors can scroll/zoom the PDF right on the page using the browser's built-in viewer — no extra library needed.
     - The "Download PDF" button works everywhere, including on phones where inline PDF viewing is unreliable.
-    - Just drop the PDF file in the same "pic/" folder as your screenshots and update the two file paths above.
+    - Screenshots live in "pic/", PDFs live in "pdf/" — keep that split and update both file paths above to match.
 
     TO EMBED A CLICKABLE FIGMA PROTOTYPE:
     1. In Figma: Share button (top right) → "Anyone with the link" → Viewer → copy the PROTOTYPE link
@@ -553,7 +556,7 @@
   </div>
 
   <!-- Project 4 -->
-  <div class="card">
+  <!-- <div class="card">
     <div class="card-head">
       <div class="card-title-wrap">
         <span class="status-dot dev"></span>
@@ -579,7 +582,7 @@
     </div>
   </div>
 
-  <!-- Project 5 -->
+  <!-- Project 5 ->
   <div class="card">
     <div class="card-head">
       <div class="card-title-wrap">
@@ -600,7 +603,7 @@
         <div class="shot-item"><span class="icon">▢</span>Before/after of the corner-tracing tool<br><code>&lt;img src="overlay-1.png"&gt;</code></div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </section>
 
