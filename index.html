@@ -91,6 +91,51 @@
   .hero p.lede{
     max-width:640px; color:var(--muted); font-size:17px; margin:0 0 14px;
   }
+  .hero-flex{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:48px;
+  }
+  .hero-main{flex:1 1 auto; min-width:0;}
+
+  .hero-panel{
+    flex:0 0 280px;
+    border:1px solid var(--border); border-radius:var(--radius);
+    background:var(--surface);
+    overflow:hidden;
+    margin-top:4px;
+  }
+  .hero-panel-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 16px; border-bottom:1px solid var(--border);
+  }
+  .hero-panel-title{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em;
+    color:var(--slate);
+  }
+  .hero-panel-list{padding:6px 16px;}
+  .hero-panel-row{
+    display:flex; align-items:center; gap:9px;
+    padding:9px 0; border-bottom:1px solid var(--bg-alt);
+  }
+  .hero-panel-row:last-child{border-bottom:none;}
+  .hero-panel-name{
+    flex:1; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .hero-panel-state{
+    font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.04em;
+    padding:2px 7px; border-radius:10px; flex-shrink:0;
+  }
+  .hero-panel-state.on{color:var(--teal); background:var(--teal-dim);}
+  .hero-panel-state.dev{color:var(--amber); background:var(--amber-dim);}
+  .hero-panel-state.arch{color:var(--slate); background:var(--slate-dim);}
+  .hero-panel-foot{
+    padding:10px 16px; border-top:1px solid var(--border);
+    font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim);
+    background:var(--bg-alt);
+  }
+  @media (max-width:900px){
+    .hero-panel{display:none;}
+  }
   .statline{
     display:flex; flex-wrap:wrap; gap:0;
     border-top:1px solid var(--border);
@@ -343,16 +388,50 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow"><span class="pulse"></span> AVAILABLE FOR FREELANCE &amp; FULL-TIME WORK</div>
-  <h1>I build the systems that quietly keep <span>operations</span> running.</h1>
-  <p class="lede">Putu Michael Jehian Theo — General Affairs Daily Worker at BaliSuperHost in Bali, who builds automation tools instead of just requesting them: appraisal pipelines, attendance systems, inventory apps, and rules-based trading engines. This page is a running log of what I've shipped.</p>
-  <p class="mono" style="font-size:13px; color:var(--slate); margin:0 0 40px;"><a href="mailto:pmjtheo@gmail.com" style="color:var(--teal); text-decoration:none;">pmjtheo@gmail.com</a> &nbsp;·&nbsp; Badung, Bali, Indonesia</p>
+  <div class="hero-flex">
+    <div class="hero-main">
+      <div class="hero-eyebrow"><span class="pulse"></span> AVAILABLE FOR FREELANCE &amp; FULL-TIME WORK</div>
+      <h1>I build the systems that quietly keep <span>operations</span> running.</h1>
+      <p class="lede">Putu Michael Jehian Theo — General Affairs Daily Worker at BaliSuperHost in Bali, who builds automation tools instead of just requesting them: appraisal pipelines, attendance systems, inventory apps, and rules-based trading engines. This page is a running log of what I've shipped.</p>
+      <p class="mono" style="font-size:13px; color:var(--slate); margin:0 0 40px;"><a href="mailto:pmjtheo@gmail.com" style="color:var(--teal); text-decoration:none;">pmjtheo@gmail.com</a> &nbsp;·&nbsp; Badung, Bali, Indonesia</p>
 
-  <div class="statline">
-    <div class="stat"><div class="n">1.5K+</div><div class="l">assets tracked in the system I built</div></div>
-    <div class="stat"><div class="n">30+</div><div class="l">staff using the attendance system daily</div></div>
-    <div class="stat"><div class="n">2hr→20m</div><div class="l">appraisal processing time, before/after</div></div>
-    <div class="stat"><div class="n">2</div><div class="l">published research contributions</div></div>
+      <div class="statline">
+        <div class="stat"><div class="n">1.5K+</div><div class="l">assets tracked in the system I built</div></div>
+        <div class="stat"><div class="n">30+</div><div class="l">staff using the attendance system daily</div></div>
+        <div class="stat"><div class="n">2hr→20m</div><div class="l">appraisal processing time, before/after</div></div>
+        <div class="stat"><div class="n">2</div><div class="l">published research contributions</div></div>
+      </div>
+    </div>
+
+    <aside class="hero-panel">
+      <div class="hero-panel-head">
+        <span class="hero-panel-title">SYSTEM STATUS</span>
+        <span class="pulse"></span>
+      </div>
+      <div class="hero-panel-row">
+        <span class="status-dot on"></span>
+        <span class="hero-panel-name">equiptrack.app</span>
+        <span class="hero-panel-state on">ONLINE</span>
+      </div>
+      <div class="hero-panel-list">
+        <div class="hero-panel-row">
+          <span class="status-dot on"></span>
+          <span class="hero-panel-name">appraisal-automation.sys</span>
+          <span class="hero-panel-state on">ONLINE</span>
+        </div>
+        <div class="hero-panel-row">
+          <span class="status-dot on"></span>
+          <span class="hero-panel-name">attendance-tracker.sys</span>
+          <span class="hero-panel-state on">ONLINE</span>
+        </div>
+        <div class="hero-panel-row">
+          <span class="status-dot dev"></span>
+          <span class="hero-panel-name">trading-engine.mq5</span>
+          <span class="hero-panel-state dev">IN DEV</span>
+        </div>
+      </div>
+      <div class="hero-panel-foot">5 systems · uptime since 2026</div>
+    </aside>
   </div>
 </section>
 
@@ -556,7 +635,7 @@
   </div>
 
   <!-- Project 4 -->
-  <!-- <div class="card">
+  <div class="card">
     <div class="card-head">
       <div class="card-title-wrap">
         <span class="status-dot dev"></span>
@@ -582,8 +661,8 @@
     </div>
   </div>
 
-  <!-- Project 5 ->
-  <div class="card">
+  <!-- Project 5 -->
+  <!-- <div class="card">
     <div class="card-head">
       <div class="card-title-wrap">
         <span class="status-dot arch"></span>
